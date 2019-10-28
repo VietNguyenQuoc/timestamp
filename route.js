@@ -2,7 +2,8 @@ const express = require('express');
 
 module.exports = app => {
   app.get('/api/timestamp', (req, res) => {
-    return res.send(new Date());
+    const validDate = new Date();
+    return res.json({ unix: validDate.getTime(), utc: validDate.toUTCString() });
   })
 
   app.get('/api/timestamp/:date_string', (req, res) => {
